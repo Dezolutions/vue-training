@@ -21,8 +21,10 @@
     <button @click="reduce(5)">Remove 5</button>
     <p v-once>Starting counter: {{ counter }}</p>
     <p>Result: {{ counter }}</p>
-    <input type="text"  @input="setName($event, 'Petrov')" @keyup.enter="confirmName">
-    <p>Your name: {{ confirmedName }}</p>
+    <input type="text" v-model="name">
+    <input type="text" v-model="lastName">
+    <button @click="resetInput">ResetInput</button>
+    <p>Your name: {{ fullname }}</p>
     <form action="" @submit.prevent="submitForm">
       <input type="text">
       <button>Sign up</button>

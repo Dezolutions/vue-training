@@ -3,8 +3,22 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: '',
-      confirmedName: ''
+      lastName: ''
     };
+  },
+  watch: {
+    counter(value){
+      if (value > 50) {
+        setTimeout(() => {
+          this.counter = 0
+        },1000)
+      }
+    }
+  },
+  computed: {
+    fullname() {
+      return (this.name || this.lastName) != '' ? `${this.name} ${this.lastName}` : ''
+    }
   },
   methods: {
     add(num) {
@@ -13,16 +27,12 @@ const app = Vue.createApp({
     reduce(num) {
       this.counter -= num
     },
-    setName(event, lastName) {
-      this.name = `${event.target.value} ${lastName}`
-    },
     submitForm(e) {
       
     },
-    confirmName() {
-      this.confirmedName = this.name
-    },
-    
+    resetInput() {
+      this.name = ''
+    }
   },
 });
 
